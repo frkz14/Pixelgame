@@ -2,26 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Electric_Lamp : Electric_Switch {
-
+public class Electric_Lamp : Electric_Switch 
+{
+	public string lampRoom;
 
 // UPDATE
+
 	void Update () 
 	{
-		if(breakerActive)
+		if(switchRoom == lampRoom)
 		{
-			if(switchActive)
+			if(breakerActive)
 			{
-				gameObject.SetActive (true);
+				if(switchActive)
+				{
+					gameObject.SetActive (true);
+				}
+				else
+				{
+					gameObject.SetActive (false);
+				}
 			}
 			else
 			{
 				gameObject.SetActive (false);
 			}
 		}
-		else
+	}
+
+// TRIGGER
+
+	void OnTriggerEnter2D (Collider2D other) // Si collision avec l'interrupteur.
+	{
+		if (other.CompareTag ("Room")) // Par la pièce ou il est situé.
 		{
-			gameObject.SetActive (false);
+			lampRoom = other.name;
+			Debug.Log ("Lamp collide with room " + other.name);
 		}
+
 	}
 }
