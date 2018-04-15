@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Electric_Instantiate : MonoBehaviour {
+
+	public GameObject breaker_P;  // prefab
+	public Transform breaker_T; // gameObject qui definit la position du spawn
+
+	public GameObject lamp_P;
+	public Transform lamp_T;
+
+	public GameObject switch_P;
+	public Transform switch_T;
+
+	void Start () 
+	{
+		
+		Instantiate (breaker_P, breaker_T.position, breaker_T.rotation);
+		Instantiate (switch_P, switch_T.position, switch_T.rotation);
+		Instantiate (lamp_P, lamp_T.position, lamp_T.rotation);
+	}
+}
