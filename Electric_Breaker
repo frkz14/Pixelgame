@@ -28,11 +28,11 @@ public class Electric_Breaker : MonoBehaviour
 	}
 		
 
-//TRIGGER
+// TRIGGER
 
 	void OnTriggerEnter2D (Collider2D other) // Si le joueur entre en collision le disjoncteur.
 	{
-		if (other.tag == "Player") 
+		if (other.CompareTag ("Player")) 
 		{
 			breakerTrigger = true;
 		}
@@ -41,7 +41,7 @@ public class Electric_Breaker : MonoBehaviour
 
 	void OnTriggerExit2D (Collider2D other) // Si le joueur sort d'une collision avec le disjoncteur.
 	{
-		if (other.tag == "Player") 
+		if (other.CompareTag ("Player")) 
 		{
 			breakerTrigger = false;
 		}
