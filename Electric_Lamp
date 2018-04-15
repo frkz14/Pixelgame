@@ -32,9 +32,9 @@ public class Electric_Lamp : Electric_Switch
 
 // TRIGGER
 
-	void OnTriggerEnter2D (Collider2D other) // Si collision avec l'interrupteur.
+	void OnTriggerEnter2D (Collider2D other) // Si collision avec la lampe.
 	{
-		if (other.CompareTag ("Room")) // Par la pièce ou il est situé.
+		if (other.CompareTag ("Room")) // Par la pièce ou elle est situé.
 		{
 			lampRoom = other.name;
 			Debug.Log ("Lamp collide with room " + other.name);
