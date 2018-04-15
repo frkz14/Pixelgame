@@ -1,0 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Electric_Switch : Electric_Breaker {
+
+	public bool switchActive;
+	public bool switchTrigger;
+
+
+// UPDATE
+
+	public void Update()
+	{
+		if(Input.GetButtonDown ("ActionKey") && switchTrigger) // Si touche action + trigger
+		{
+			if(breakerActive)
+			{
+				if(switchActive)
+				{
+					switchActive = true;
+				}
+				else
+				{
+					switchActive = false;
+				}
+			}
+			else
+			{
+				//GOMS.bottomText.Text = breakerOffMessage;
+				Debug.Log(breakerOffMessage);
+			}
+		}
+
+		Debug.Log("switchActive is : " + breakerActive);
+	}
+
+
+//TRIGGER
+
+	void OnTriggerEnter2D (Collider2D other) // Si le joueur entre en collision l'interrupteur.
+	{
+		if (other.tag == "Player") 
+		{
+			switchTrigger = true;
+		}
+
+	}
+
+	void OnTriggerExit2D (Collider2D other) // Si le joueur sort d'une collision avec l'interrupteur.
+	{
+		if (other.tag == "Player") 
+		{
+			switchTrigger = false;
+		}
+	}
+}
