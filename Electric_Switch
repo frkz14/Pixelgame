@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Electric_Switch : Electric_Breaker {
+public class Electric_Switch : Electric_Breaker 
+{
 
 	public bool switchActive;
 	public bool switchTrigger;
+	public string switchRoom;
 
 
 // UPDATE
@@ -36,13 +38,19 @@ public class Electric_Switch : Electric_Breaker {
 	}
 
 
-//TRIGGER
+// TRIGGER
 
-	void OnTriggerEnter2D (Collider2D other) // Si le joueur entre en collision l'interrupteur.
+	void OnTriggerEnter2D (Collider2D other) // Si collision avec l'interrupteur.
 	{
-		if (other.tag == "Player") 
+		if (other.CompareTag == "Player") // Par le joueur.
 		{
 			switchTrigger = true;
+		}
+
+		if (other.CompareTag ("Room")) // Par la pièce ou il est situé.
+		{
+			switchRoom = other.name;
+			Debug.Log ("Switch collide with room " + other.name);
 		}
 
 	}
