@@ -16,16 +16,16 @@ public class Electric_Lamp : Electric_Switch
 			{
 				if(switchActive)
 				{
-					gameObject.SetActive (true);
+					//this.gameObject.SetActive (true);
 				}
 				else
 				{
-					gameObject.SetActive (false);
+					//this.gameObject.SetActive (false);
 				}
 			}
 			else
 			{
-				gameObject.SetActive (false);
+				//this.gameObject.SetActive (false);
 			}
 		}
 	}
@@ -34,7 +34,7 @@ public class Electric_Lamp : Electric_Switch
 
 	void OnTriggerEnter2D (Collider2D other) // Si collision avec la lampe.
 	{
-		if (other.CompareTag ("Room")) // Par la pièce ou elle est situé.
+		if (other.CompareTag ("interRoom")) // Par la pièce ou elle est situé.
 		{
 			lampRoom = other.name;
 			Debug.Log ("Lamp collide with room " + other.name);
