@@ -42,12 +42,12 @@ public class Electric_Switch : Electric_Breaker
 
 	void OnTriggerEnter2D (Collider2D other) // Si collision avec l'interrupteur.
 	{
-		if (other.CompareTag == "Player") // Par le joueur.
+		if (other.CompareTag ("Player")) // Par le joueur.
 		{
 			switchTrigger = true;
 		}
 
-		if (other.CompareTag ("Room")) // Par la pièce ou il est situé.
+		if (other.CompareTag ("interRoom")) // Par la pièce ou il est situé.
 		{
 			switchRoom = other.name;
 			Debug.Log ("Switch collide with room " + other.name);
@@ -57,7 +57,7 @@ public class Electric_Switch : Electric_Breaker
 
 	void OnTriggerExit2D (Collider2D other) // Si le joueur sort d'une collision avec l'interrupteur.
 	{
-		if (other.tag == "Player") 
+		if (other.CompareTag ("Player")) 
 		{
 			switchTrigger = false;
 		}
